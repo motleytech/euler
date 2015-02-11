@@ -10,5 +10,5 @@ def process():
     
 etime, solution = process()
 
-print "Problem :\n%s\n\n\nSolution :\n%s" % (problem, solution)
+print "Problem :\n%s\n\n\nSolution : %s" % (problem, solution)
 print "\nRunning time : %10.6f seconds" % (etime)
