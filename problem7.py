@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 from tools.primes import genPrimes
 from tools.timeit import timeit
 
@@ -17,7 +17,8 @@ def process():
         if idx >= N:
             break
             
-    return "%sth prime is %s" % (N, x) 
+    value = "%sth prime is %s" % (N, x)  
+    return value
     
 etime, solution = process()
 

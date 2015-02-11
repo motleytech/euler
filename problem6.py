@@ -1,9 +1,7 @@
-#!/bin/python
-from time import time
+#!/usr/bin/python
+from tools.timeit import timeit
 
-startt = time()
-
-problem = """
+problem = """\
 The sum of the squares of the first ten natural numbers is,
 
 12 + 22 + ... + 102 = 385
@@ -16,10 +14,12 @@ Hence the difference between the sum of the squares of the first ten natural num
 Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
 """
 
-# take product of primes (highest powers less than 20)
-solution = sum((x*x) for x in range(1,101)) - pow(sum(range(1,101)),2)
+@timeit
+def process():
+    value = pow(sum(range(1,101)),2) - sum((x*x) for x in range(1,101))
+    return value
+    
+etime, solution = process()
 
-endt = time()
-
-print "%s\n\nSolution : %s" % (problem, -solution)
-print "\nRunning time : %10.6f seconds" % (endt - startt)
+print "Problem :\n%s\n\n\nSolution :\n%s" % (problem, solution)
+print "\nRunning time : %10.6f seconds" % (etime)

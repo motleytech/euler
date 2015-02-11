@@ -1,30 +1,31 @@
-#!/bin/python
+#!/usr/bin/python
+from tools.timeit import timeit
 from tools.general import isPalindrome
-from pprint import pprint as pp
-from time import time
-startt = time()
 
 problem = """Find the largest palindrome made from the product of two 3-digit numbers."""
 
-solution = None
+@timeit
+def process():
+    solutions = []
+    maxmin = 0
+    N = 1000
 
-solutions = []
-maxmin = 0
-N = 1000
-
-for x in xrange(N, N/10 - 1 , -1):
-    for y in xrange(x, N/10 - 1, -1):
-        value = x*y
-        if isPalindrome(value):
-            solutions.append((value, x, y))
-            if y > maxmin:
-                maxmin = y
+    for x in xrange(N, N/10 - 1 , -1):
+        for y in xrange(x, N/10 - 1, -1):
+            value = x*y
+            if isPalindrome(value):
+                solutions.append((value, x, y))
+                if y > maxmin:
+                    maxmin = y
+                break
+        if x <= maxmin:
             break
-    if x <= maxmin:
-        break
 
-endt = time()
+    value = max(solutions)
+    return value
+    
+etime, solution = process()
 
-print "%s\n\nSolution : %s" % (problem, max(solutions))
-print "\nRunning time : %10.6f seconds" % (endt - startt)
+print "Problem :\n%s\n\n\nSolution :\n%s" % (problem, solution)
+print "\nRunning time : %10.6f seconds" % (etime)
 
