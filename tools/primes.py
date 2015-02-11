@@ -19,6 +19,8 @@ def isPrime(x, primes=None):
 
 
 def genPrimes(limit=None):
+    if limit is None:
+        limit = 999999999
     primes = [2, 3, 5, 7]
     for x in primes:
 
