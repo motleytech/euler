@@ -33,9 +33,10 @@ def genPrimes(limit=None):
             yield a
 
         a = x + 2
-        if isPrime(a, primes):
-            primes.append(a)
-            yield a
+        if a <= limit:
+            if isPrime(a, primes):
+                primes.append(a)
+                yield a
 
 
 def factorize(num):
