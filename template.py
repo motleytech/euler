@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 from tools.timeit import timeit
 
 problem = """Problem statement goes here"""
