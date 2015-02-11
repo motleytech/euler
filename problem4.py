@@ -10,14 +10,16 @@ solution = None
 
 solutions = []
 maxmin = 0
+N = 1000
 
-for x in xrange(1000, 99, -1):
-    for y in xrange(x, 99, -1):
+for x in xrange(N, N/10 - 1 , -1):
+    for y in xrange(x, N/10 - 1, -1):
         value = x*y
         if isPalindrome(value):
             solutions.append((value, x, y))
             if y > maxmin:
                 maxmin = y
+            break
     if x <= maxmin:
         break
 
