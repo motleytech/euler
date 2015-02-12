@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from tools.timeit import timeit
 from pprint import pprint as pp
+from tools.general import product
 
 problem = """In the 20x20 grid below, four numbers along a diagonal line have been marked in red.
 
@@ -53,17 +54,13 @@ data = [[int(x) for x in d.split(" ")] for d in data.split("\n")]
 
 @timeit
 def process():
-    def prod(s):
-        a, b, c, d = s
-        return a*b*c*d
-        
     l2r = [[data[dy][dx+idx] for idx in xrange(4)] for dy in range(0, len(data)) for dx in range(0, len(data[dy]) - 3)]
     up2down = [[data[dy+idx][dx] for idx in xrange(4)] for dy in range(0, len(data) - 3) for dx in range(0, len(data[dy]))]
     diag1 = [[data[dy+idx][dx+idx] for idx in xrange(4)] for dy in range(0, len(data) -3) for dx in range(0, len(data) - 3)]
     diag2 = [[data[dy-idx][dx+idx] for idx in xrange(4)] for dy in range(3, len(data)) for dx in range(0, len(data) - 3)]
     
     sums = l2r + up2down + diag1 + diag2
-    sums = [prod(s) for s in sums]
+    sums = [product(s) for s in sums]
     
     value = max(sums)
     return value

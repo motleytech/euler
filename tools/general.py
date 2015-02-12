@@ -1,5 +1,11 @@
 #!/bin/python
 
+def product(s):
+    return reduce(lambda a,b: a*b, s, 1)
+    
+def mysum(s, initial):
+    return reduce(lambda a,b: a+b, s, initial)
+
 def isPalindrome(num):
     num = str(num)
 
@@ -12,7 +18,5 @@ def isPalindrome(num):
         return num[:lnum/2] == num[lnum-1:lnum/2:-1]
 
 if __name__ == "__main__":
-    for x in range(10, 80):
-	    if isPalindrome(x):
-		    print "%s" % (x)
+    print product([1,2,3,4,5,6])
 	
