@@ -17,6 +17,14 @@ def isPalindrome(num):
     else:
         return num[:lnum/2] == num[lnum-1:lnum/2:-1]
 
+def factorial(n):
+    if n < 2:
+        return 1
+    return product(xrange(2, n+1))
+
+def nChooseR(n, r):
+    return factorial(n) / (factorial(r) * factorial(n-r))
+
 if __name__ == "__main__":
     print product([1,2,3,4,5,6])
 	
